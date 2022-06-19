@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   
   config.vm.box = "hashicorp/bionic64"
-  config.vm.hostname = "n1.local"
+  config.vm.hostname = "nd2.local"
   # VB or Vagrant is always creating a NAT interface, with IP range of 10....
   # But I needed a network which can be part of the host netwrork IP range. At the 
   #    time of this it was 192.168.1.0/24
