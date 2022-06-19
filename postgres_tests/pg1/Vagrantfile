@@ -1,0 +1,41 @@
+Vagrant.configure("2") do |config|
+  
+  config.vm.box = "bento/ubuntu-20.04"
+  config.vm.hostname = "pg1.local"
+  # VB or Vagrant is always creating a NAT interface, with IP range of 10....
+  # But I needed a network which can be part of the host netwrork IP range. At the 
+  #    time of this it was 192.168.1.0/24
+  # To acheive it looks like I need to create a public network of type Bridge.
+  # Bridge network I think what it means is, the guest OS will use the host's 
+  # IP Interface. A host can have multiple interfaces & you need to specify the exact name.
+  # In case you get it wring, vagrant up will propmpt you for that information.
+  # As you can see from the below config option, :bridge parameter is used to specify the name of the 
+  # IP interface on my host. Please note, it will diffrent on diff machines.
+  # When I set the type: dhcp, I was getting assigned a IPV6 address, so what I did was I hardcoded
+  # the IP as u can see from the nelow config, like this: "ip: '192.168.1.52'"
+
+  config.vm.network "public_network", ip: '192.168.1.61', :bridge => 'en0: Wi-Fi' #,type: "dhcp" 
+  #config.vm.network "private_network", ip: "192.168.50.7", virtualbox__intnet: "nodenw"
+  
+end
+
+#Vagrant  notes
+# /vagrant dor inside the VM will map to folder on host that contains the vagrant file
+
+# Postrgres installation
+#   sudo apt update
+#   sudo apt install postgresql postgresql-contrib
+#   sudo systemctl start postgresql.service
+#   sudo systemctl status postgresql.service
+
+# Login using ident auth mechanism, ident auth mechanism means, if a postgres user matches a
+# linux user with the same name, then you can login into postgres, examples:
+# sudo -u postgres psql => will place u inside the postgres DB
+
+# Create a new role, createuser is OS utility added by postgres intallation with which u can add users.
+# sudo -u postgres createuser --interactive
+# Then I need a add a linux user
+# sudo adduser arham
+
+# There is another OS utility, add by postgres installation called createdb
+# sudo -u postgres createdb arham
