@@ -39,3 +39,6 @@ end
 
 # There is another OS utility, add by postgres installation called createdb
 # sudo -u postgres createdb arham
+
+# Create a role/user like this:
+# create role test_role WITH CREATEDB LOGIN PASSWORD '123';
