@@ -1,0 +1,4 @@
+[etcd]
+etcd1 ansible_host=10.0.0.150  ansible_user=vagrant
+etcd2 ansible_host=10.0.0.151  ansible_user=vagrant
+etcd3 ansible_host=10.0.0.152  ansible_user=vagrant

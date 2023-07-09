@@ -1,0 +1,53 @@
+Vagrant.configure("2") do |config|
+  
+    config.vm.box = "bento/ubuntu-20.04"
+    config.vm.hostname = "jdk1"
+    # VB or Vagrant is always creating a NAT interface, with IP range of 10....
+    # But I needed a network which can be part of the host netwrork IP range. At the 
+    #    time of this it was 192.168.1.0/24
+    # To acheive it looks like I need to create a public network of type Bridge.
+    # Bridge network I think what it means is, the guest OS will use the host's 
+    # IP Interface. A host can have multiple interfaces & you need to specify the exact name.
+    # In case you get it wring, vagrant up will propmpt you for that information.
+    # As you can see from the below config option, :bridge parameter is used to specify the name of the 
+    # IP interface on my host. Please note, it will diffrent on diff machines.
+    # When I set the type: dhcp, I was getting assigned a IPV6 address, so what I did was I hardcoded
+    # the IP as u can see from the below config, like this: "ip: '192.168.1.52'"
+  
+    config.vm.network "public_network", ip: '10.0.0.162', :bridge => 'en0: Wi-Fi' #,type: "dhcp" 
+    #config.vm.network "private_network", ip: "192.168.50.7", virtualbox__intnet: "nodenw"
+    
+  end
+  
+  # curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_linux-x64_bin.tar.gz -o openjdk-18.0.2.1_linux-x64_bin.tar.gz
+  # tar xvf openjdk-18.0.2.1_linux-x64_bin.tar.gz
+  # sudo mv  jdk-18.0.2.1 /opt
+  # export JAVA_HOME=/opt/jdk-18.0.2.1
+  # export PATH=$JAVA_HOME/bin:$PATH
+
+
+  #Vagrant  notes
+  # /vagrant dir inside the VM will map to folder on host that contains the vagrant 
+  
+  # Install docker
+  # sudo apt-get update
+  # sudo apt-get install ca-certificates curl gnupg lsb-release
+
+  # sudo mkdir -p /etc/apt/keyrings
+  # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+  # echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+  # sudo apt-get update
+  # sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+  # sudo usermod -aG docker vagrant
+
+
+# curl https://downloads.apache.org/kafka/3.5.0/kafka_2.12-3.5.0.tgz -o kafka_2.12-3.5.0.tgz
+
+
+
+# kafka
+# bin/kafka-topics.sh --create --bootstrap-server localhost:9093 --partitions 2 --replication-factor 2 --topic user-tracking
+# bin/kafka-topics.sh --list --bootstrap-server localhost:9093

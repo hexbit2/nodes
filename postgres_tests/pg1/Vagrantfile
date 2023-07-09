@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   # When I set the type: dhcp, I was getting assigned a IPV6 address, so what I did was I hardcoded
   # the IP as u can see from the nelow config, like this: "ip: '192.168.1.52'"
 
-  config.vm.network "public_network", ip: '192.168.1.61', :bridge => 'en0: Wi-Fi' #,type: "dhcp" 
+  config.vm.network "public_network", ip: '192.168.1.189', :bridge => 'en0: Wi-Fi' #,type: "dhcp" 
   #config.vm.network "private_network", ip: "192.168.50.7", virtualbox__intnet: "nodenw"
   
 end

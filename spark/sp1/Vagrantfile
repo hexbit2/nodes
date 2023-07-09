@@ -1,0 +1,55 @@
+Vagrant.configure("2") do |config|
+  
+    config.vm.box = "bento/ubuntu-20.04"
+    config.vm.hostname = "br1"
+    config.vm.network "public_network", ip: '10.0.0.162', :bridge => 'en0: Wi-Fi'
+  end
+  
+  # curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_linux-x64_bin.tar.gz -o openjdk-18.0.2.1_linux-x64_bin.tar.gz
+  # tar xvf openjdk-18.0.2.1_linux-x64_bin.tar.gz
+  # sudo mv  jdk-18.0.2.1 /opt
+  # vi ~/.bashrc
+  # export JAVA_HOME=/opt/jdk-18.0.2.1
+  # export PATH=$JAVA_HOME/bin:$PATH
+  # source ~/.bashrc
+
+  # curl https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz -o spark-3.4.1-bin-hadoop3.tgz
+  # tar xvf spark-3.4.1-bin-hadoop3.tgz
+  # export SPARK_HOME=~/spark-3.4.1-bin-hadoop3
+  # export PATH=$SPARK_HOME/bin:$PATH
+
+  # export SPARK_LOCAL_IP=10.0.0.162
+  # spark-shell --master local[3]
+
+  # mkdir spa;cd spa
+  # sudo apt-get update
+  # sudo apt-get install python3.8-venv
+  # python3 -m venv venv
+  # chmod +x venv/bin/activate
+  # . venv/bin/activate
+
+  # export PYSPARK_PYTHON=/home/vagrant/spa/venv/bin/python
+  # export PYSPARK_DRIVER_PYTHON=/home/vagrant/spa/venv/bin/python
+  # pyspark
+
+  # wget https://repo.anaconda.com/archive/Anaconda3-2023.03-1-Linux-x86_64.sh
+  # bash Anaconda3-2023.03-1-Linux-x86_64.sh # lets install in default location
+  # source ~/.bashrc # you will need to run this as conda adds a bunch of things to .bashrc
+  # conda config --set auto_activate_base false # as soon as u run "source ~/.bashrc", bas env gets activated, so that base env is not activated by default
+  # conda deactivate # if you want to get out of the base env
+  # conda activate base
+  # conda create --name myenv
+  # conda activate myenv
+  # conda deactivate # it goes back to base, but then you can run conda deactivate again to move out of base as well
+  # conda install -c conda-forge findspark # in conda there is a concept of channel given by -c param
+  # conda install -c conda-forge pyhive delta-spark jupyter
+
+  # jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser # listents to all IPs
+  # http://10.0.0.162:8888/?token=f59001d059fd0157ef446b1ea9c07749b4cd1897f3ab1304
+
+
+  # import findspark
+  # findspark.init()
+  # findspark.find()
+
+  # spark-submit --master local[4] --deploy-mode client --name SparkSubmitApp ./spark_app2.py
