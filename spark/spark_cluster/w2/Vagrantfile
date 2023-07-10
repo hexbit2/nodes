@@ -1,8 +1,8 @@
 Vagrant.configure("2") do |config|
   
     config.vm.box = "bento/ubuntu-20.04"
-    config.vm.hostname = "br1"
-    config.vm.network "public_network", ip: '10.0.0.162', :bridge => 'en0: Wi-Fi'
+    config.vm.hostname = "w2"
+    config.vm.network "public_network", ip: '10.0.0.165', :bridge => 'en0: Wi-Fi'
   end
   
   # curl https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_linux-x64_bin.tar.gz -o openjdk-18.0.2.1_linux-x64_bin.tar.gz
@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
   # conda install -c conda-forge pyhive delta-spark jupyter
 
   # jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser # listents to all IPs
-  # http://10.0.0.162:8888/?token=c7f15cfc875d8aa0440194f6972b3d8879ee82cc867c6cd9
+  # http://10.0.0.162:8888/?token=f59001d059fd0157ef446b1ea9c07749b4cd1897f3ab1304
 
 
   # import findspark
