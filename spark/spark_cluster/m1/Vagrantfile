@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
   # vi ~/.bashrc
   # export JAVA_HOME=/opt/jdk-18.0.2.1
   # export PATH=$JAVA_HOME/bin:$PATH
+  # alias cls=clear
   # source ~/.bashrc
 
   # curl https://dlcdn.apache.org/spark/spark-3.4.1/spark-3.4.1-bin-hadoop3.tgz -o spark-3.4.1-bin-hadoop3.tgz
@@ -18,7 +19,10 @@ Vagrant.configure("2") do |config|
   # export SPARK_HOME=~/spark-3.4.1-bin-hadoop3
   # export PATH=$SPARK_HOME/bin:$PATH
 
-  # export SPARK_LOCAL_IP=10.0.0.162
+  # sudo apt install net-tools
+
+
+  # export SPARK_LOCAL_IP=10.0.0.163
   # spark-shell --master local[3]
 
   # mkdir spa;cd spa
@@ -65,3 +69,9 @@ Vagrant.configure("2") do |config|
 
   # spark-submit --master spark://10.0.0.163:7077 --name spark_submitapp --total-executor-cores 4 --executor-memory 1g --executor-cores 1 '/vagrant/spark_app/spark_app2.py'
   
+
+  # When a note book runs a executor on a worker, it tries tio use the paython in path of the jumpter server
+    # set in bashrc for workers & may not needed for cluster manager
+      # vi ~/.bashrc
+      # export PYSPARK_PYTHON=/usr/bin/python3 
+      # source ~/.bashrc

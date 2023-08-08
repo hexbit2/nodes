@@ -45,11 +45,22 @@ Vagrant.configure("2") do |config|
   # conda install -c conda-forge pyhive delta-spark jupyter
 
   # jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser # listents to all IPs
-  # http://10.0.0.162:8888/?token=f59001d059fd0157ef446b1ea9c07749b4cd1897f3ab1304
+  # http://10.0.0.162:8888/?token=531c32ea18bce9333639996080b88684dc4d0a75e18c50d3
 
 
   # import findspark
   # findspark.init()
   # findspark.find()
+
+# from pyspark.sql import SparkSession
+# from pyspark.sql.types import *
+
+# spark = (
+#     SparkSession.builder
+#         .appName('NoteBookSparkApp')
+#         .master('local[4]')
+#         .getOrCreate()
+# )
+# spark
 
   # spark-submit --master local[4] --deploy-mode client --name SparkSubmitApp ./spark_app2.py
